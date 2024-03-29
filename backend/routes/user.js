@@ -71,7 +71,7 @@ router.post("/signup", async (req, res) => {
         {
             userId: dbUser._id,
         },
-        JWT_TOKEN
+        "secretToken"
     );
     res.json({
         msg: "User created successfully",
@@ -114,7 +114,7 @@ router.post("/signin", async (req, res) => {
         {
             userId: user._id,
         },
-        JWT_TOKEN
+        "secretToken"
     );
 
     res.status(200).json({
@@ -161,8 +161,8 @@ router.get("/bulk", async (req, res) => {
     res.json({
         user: users.map((user) => ({
             username: user.username,
-            firstname: user.firstName,
-            lastname: user.lastName,
+            firstname: user.firstname,
+            lastname: user.lastname,
             _id: user._id,
         })),
     });
